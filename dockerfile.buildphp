@@ -19,6 +19,8 @@ RUN yum --releasever=2017.03 install \
     openssl-devel \
     libpng-devel \
     libjpeg-devel \
+    libicu-devel \
+    gcc-c++ \
     curl-devel -y
 
 RUN curl -sL https://github.com/php/php-src/archive/$PHP_VERSION.tar.gz | tar -zxv
@@ -31,6 +33,13 @@ RUN ./configure \
     --enable-static=yes \
     --enable-shared=no \
     --disable-all \
+    --with-curl \
+    --with-gd \
+    --with-zlib \
+    --with-mysqli \
+    --with-pdo-mysql \
+    --with-openssl \
+    --without-pear \
     --enable-hash \
     --enable-json \
     --enable-libxml \
@@ -38,11 +47,15 @@ RUN ./configure \
     --enable-phar \
     --enable-soap \
     --enable-xml \
-    --with-curl \
-    --with-gd \
-    --with-zlib \
-    --with-openssl \
-    --without-pear \
-    --enable-ctype
+    --enable-simplexml \
+    --enable-pdo \
+    --enable-ctype \
+    --enable-zip \
+    --enable-bcmath \
+    --enable-intl \ 
+    --enable-filter \
+    --enable-tokenizer \
+    --enable-fileinfo
 
 RUN make -j 5
+
