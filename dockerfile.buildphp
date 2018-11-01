@@ -30,9 +30,10 @@ WORKDIR /php-src-$PHP_VERSION
 RUN ./buildconf --force
 
 RUN ./configure \
+    --disable-all \
     --enable-static=yes \
     --enable-shared=no \
-    --disable-all \
+    --enable-opcache \
     --with-curl \
     --with-gd \
     --with-zlib \
@@ -55,7 +56,7 @@ RUN ./configure \
     --enable-intl \ 
     --enable-filter \
     --enable-tokenizer \
-    --enable-fileinfo
+    --enable-fileinfo \
+    --enable-opcache
 
 RUN make -j 5
-

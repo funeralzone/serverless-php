@@ -15,5 +15,6 @@ docker build --build-arg PHP_VERSION=$PHP_VERSION_GIT_BRANCH -t php-build -f doc
 container=$(docker create php-build)
 
 docker -D cp $container:/php-src-$PHP_VERSION_GIT_BRANCH/sapi/cli/php .
+docker -D cp $container:/php-src-$PHP_VERSION_GIT_BRANCH/modules/opcache.so .
 
 docker rm $container
