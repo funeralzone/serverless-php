@@ -57,6 +57,8 @@ RUN ./configure \
     --enable-filter \
     --enable-tokenizer \
     --enable-fileinfo \
-    --enable-opcache
+    --enable-opcache \
+    --enable-dom \
+    --enable-sockets
 
 RUN make -j 5
